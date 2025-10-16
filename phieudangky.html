@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <title>Phiếu Đăng Ký
+    </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phiếu đăng ký</title>
+  <style>
+    body{font-family: Arial, Helvetica, sans-serif; background:#fff; color:#111;}
+    .page{max-width:760px;margin:18px auto;padding:10px}
+
+    /* header table */
+    table.header {width:100%; border-collapse:collapse; margin-bottom:10px;}
+    table.header td {vertical-align:middle; text-align:center; position:relative;}
+    table.header td img {display:block; margin:auto;}
+
+    /* Cột 2 */
+    table.header td.col2 {width:60%; position:relative;}
+    table.header td.col1, table.header td.col3, table.header td.col4, table.header td.col5 {width:10%;}
+
+    /* overlay ảnh */
+    .overlay-container {position:relative; width:100%; height:80px;}
+    .overlay-container img.bg {width:100%; height:100%; object-fit:cover;}
+    .overlay-container img.fg {position:absolute; top:0; left:0; height:80px; width:auto;}
+
+    h1{font-family: "Arial", Georgia, serif; font-size:36px;text-align:center;margin:18px 0 8px;font-weight:bold;letter-spacing:1px}
+
+
+    form{width:640px;margin:0 auto}
+    .row{display:flex;align-items:center;margin:8px 0}
+    label{width:140px;padding-right:8px;font-size:14px}
+    input[type=text], input[type=email], select, textarea{flex:1;padding:6px;border:1px solid #9bb;outline:none}
+    input[type=text]:focus, input[type=email]:focus, select:focus, textarea:focus{box-shadow:0 0 3px rgba(0,120,200,0.1)}
+    .small{width:80px}
+    .checkboxes, .radios{display:flex;flex-direction:column}
+    .checkboxes label, .radios label{display:flex;align-items:center;gap:3px}
+    textarea{height:110px;resize:vertical}
+    .buttons{display:flex;gap:10px;justify-content:center;margin-top:14px}
+    button{padding:8px 18px;border:1px solid #6a8;background:#eef;border-radius:4px;cursor:pointer}
+    button.reset{background:#fff;border:1px solid #aaa}
+    .required{color:#c33;margin-left:4px}
+    .note{font-size:12px;color:#666;margin-left:140px}
+
+    /* responsive */
+    @media (max-width:700px){form{width:100%}label{width:120px} .page{padding:8px}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <table class="header" boder="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="col2" colspan="2" >
+          <div class="overlay-container">
+            <img src="Images/logo_bg.gif" alt="Ảnh 2" class="bg">
+            <img src="Images/lachong.gif" alt="Ảnh 1" class="fg">
+          </div>
+        </td>
+        <td class="col3"><img src="Images/Flash.gif" alt="Ảnh 3" width="70" height="80"></td>
+        <td class="col4"><img src="Images/dreamweaver.gif" alt="Ảnh 4" width="70" height="80"></td>
+        <td class="col5"><img src="Images/adobe.gif" alt="Ảnh 5" width="70" height="80"></td>
+      </tr>
+    </table>
+    <hr style="border: 2px solid red; width: 60%; margin: 0 auto 20px auto;">
+    <h1>PHIẾU ĐĂNG KÝ</h1>
+
+    <form id="registration" onsubmit="return handleSubmit(event)">
+      <div class="row" >
+        <label for="fullname">Họ và tên:</label>
+        <input id="fullname" name="fullname" type="text" required placeholder="Nhập họ và tên" />
+        <span class="required">(*)</span>
+      </div>
+
+      <div class="row">
+        <label for="address">Địa chỉ:</label>
+        <input id="address" name="address" type="text" placeholder="Nhập địa chỉ" />
+      </div>
+
+      <div class="row">
+        <label for="email">Email :</label>
+        <input id="email" name="email" type="email" required placeholder="example@mail.com" />
+        <span class="required">(*)</span>
+      </div>
+
+       <div class="row">
+        <label>Giới tính:</label>
+        <div class="radios">
+          <label><input type="radio" name="gender" value="Nam" required> Nam</label>
+          <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="age">Tuổi:</label>
+        <input id="age" name="age" type="text" class="small" pattern="\\d+" title="Chỉ nhập số" placeholder="VD: 20" required />
+        <span class="required">(*)</span>
+      </div>
+
+      <div class="row" style="align-items:flex-start">
+        <label>Sở thích:</label>
+        <div class="checkboxes">
+          <label><input type="checkbox" name="hobby" value="The thao"> Thể thao</label>
+          <label><input type="checkbox" name="hobby" value="Van hoc"> Văn học</label>
+          <label style="white-space:nowrap"><input type="checkbox" name="hobby" value="CNTT"> Công nghệ thông tin</label>
+          <label><input type="checkbox" name="hobby" value="Lich su"> Lịch sử</label>
+          <label><input type="checkbox" name="hobby" value="Game"> Game</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="major">Chuyên ngành:</label>
+        <select id="major" name="major">
+          <option value="Công nghệ Web">Công nghệ Web</option>
+          <option value="Mạng máy tính">Mạng máy tính</option>
+          <option value="Khoa học dữ liệu">Khoa học dữ liệu</option>
+          <option value="An toàn thông tin">An toàn thông tin</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="file">Gửi hình:</label>
+        <input id="file" name="file" type="file" accept="image/*" />
+      </div>
+
+      <div class="row" style="align-items:flex-start">
+        <label for="note">Yêu cầu:</label>
+        <textarea id="note" name="note" placeholder="Ghi yêu cầu, ghi chú..."></textarea>
+      </div>
+
+      <div class="note">Các trường có (*) là bắt buộc.</div>
+
+      <div class="buttons">
+        <button type="submit">Gửi thông tin</button>
+        <button type="reset" class="reset">Nhập lại</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function handleSubmit(e){
+      e.preventDefault();
+      const f = document.getElementById('registration');
+      const data = new FormData(f);
+      const obj = {};
+      for (const [k,v] of data.entries()){
+        if (obj[k]){
+          if (Array.isArray(obj[k])) obj[k].push(v); else obj[k]=[obj[k],v];
+        } else obj[k]=v;
+      }
+      alert('Dữ liệu sẽ được gửi (thí dụ):\n' + JSON.stringify(obj, null, 2));
+      return false;
+    }
+  </script>
+</body>
+</html>
